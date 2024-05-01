@@ -1,4 +1,4 @@
-plugins:
+gems:
   - jekyll-redirect-from
 redirect_from:
   json: false
