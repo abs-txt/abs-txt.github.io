@@ -1,0 +1,37 @@
+---
+- name: Главное
+  slug: main
+  count: 397
+- name: В мире
+  slug: world
+  count: 157
+- name: Комментарии
+  slug: comments
+  count: 163
+- name: Наука
+  slug: science
+  count: 516
+- name: Hi-tech
+  slug: hitech
+  count: 372
+- name: Здоровье
+  slug: health
+  count: 280
+- name: Автомобили
+  slug: auto
+  count: 138
+- name: Культура
+  slug: culture
+  count: 240
+- name: Спорт
+  slug: sport
+  count: 148
+- name: Секс
+  slug: love
+  count: 160
+- name: Курьёзы
+  slug: fun
+  count: 188
+- name: Праздники
+  slug: holidays
+  count: 3

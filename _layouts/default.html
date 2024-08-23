@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+{% if paginator.posts[1].topic_name %}
+{% assign topic_name = paginator.posts[1].topic_name %}
+{% assign current_page = page.pagination_info.curr_page %}
+
+  {% if current_page == 1 %}
+    {% assign topic_title = topic_name %}
+  {% else %}
+    {% assign topic_title = topic_name | append: ' — страница ' | append: current_page %}
+  {% endif %}
+{% endif %}
+
+    <title>{% if topic_title %}{{ topic_title }}{% elsif page.title %}{{ page.title }}{% endif %} &mdash; {{ site.title }}</title>
+    {% gtm head %}
+    <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
+</head>
+<body>
+{% gtm body %}
+    <header>
+        <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+        <nav>
+            <ul>
+                {% for topic in site.data.topics %}
+                <li><a href="{{ '/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="content">
+            {{ content }}
+        </div>
+        <aside class="sidebar">
+            <h2>Последние заголовки</h2>
+            <ul>
+                {% for post in site.posts limit:20 %}
+                <li><span class="post-date">{{ post.date | date: site.date_format }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
+                {% endfor %}
+            </ul>
+            <h2>Разделы</h2>
+            <ul>
+                {% for topic in site.data.topics %}
+                <li><a href="{{ topic.slug | append: '/' | relative_url }}">{{ topic.name }}</a></li>
+                {% endfor %}
+            </ul>
+        </aside>
+    </main>
+
+    <footer>
+        <p>&copy; 2004 &mdash; {{ site.time | date: '%Y' }} {{ site.title }}</p>
+    </footer>
+</body>
+</html>

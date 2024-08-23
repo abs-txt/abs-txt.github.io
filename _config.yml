@@ -1,3 +1,57 @@
-theme: minima
-minima:
-  skin: auto
+# Site settings
+title: "АБС.txt"
+description: "АБС.txt: самые важные и интересные новости, статьи, материалы ведущих отечественных и зарубежных СМИ"
+baseurl: "/" # the subpath of your site, e.g. /blog
+url: "https://abs-txt.github.io" # the base hostname & protocol for your site, e.g. http://example.com
+
+# Build settings
+markdown: kramdown
+encoding: utf-8
+plugins:
+  - jekyll-paginate-v2
+  - jekyll-sitemap
+  - jekyll-google-tag-manager
+
+permalink: none
+
+# Pagination
+pagination:
+  enabled: true
+  per_page: 10
+  permalink: '/:num/'
+  title: ':title'
+  limit: 0
+  sort_field: 'date'
+  sort_reverse: true
+  trail:
+    before: 3
+    after: 3
+  extension: html
+
+autopages:
+  enabled: true
+  categories:
+    layouts:
+      - 'topic.html'
+    title: ':cat'
+    permalink: '/:cat/'
+
+google:
+  tag_manager:
+    container_id: GTM-PKQ7BPP4
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - convert_csv_to_json.rb
+  - generate_pages.rb
+  - _data/
+
+# Custom variables
+date_format: "%Y-%m-%d"

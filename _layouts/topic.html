@@ -1,0 +1,38 @@
+---
+layout: default
+pagination:
+  enabled: true
+  category: topic_slug
+---
+
+<h1>{{ paginator.posts[1].topic_name }}</h1>
+
+{% for post in paginator.posts %}
+  <article class="announcement">
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            {% if post.subtitle %}
+            <h3>{{ post.subtitle }}</h3>
+            {% endif %}
+            <p class="post-meta">
+            {% if post.author != "" %}
+            Текст: {{ post.author }}<br/>
+            {% endif %}
+            {{ post.date | date: site.date_format }}
+            </p>
+            <p>
+            {{ post.announcement }}
+            </p>
+  </article>
+{% endfor %}
+
+{% if paginator.page_trail %}
+  <nav class="pagination">
+  {% for trail in paginator.page_trail %}
+    {% if page.url == trail.path %}
+        <span class="current">{{ trail.num }}</span>
+    {% else %}
+        <a href="{{ trail.path | replace: 'index.html', ''}}">{{ trail.num }}</a>
+    {% endif %}
+  {% endfor %}
+  </nav>
+{% endif %}

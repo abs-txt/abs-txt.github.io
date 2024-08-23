@@ -1,0 +1,48 @@
+---
+layout: default
+---
+<article class="post">
+    <h1>{{ page.title }}</h1>
+    <p class="post-meta">
+        {{ page.date | date: site.date_format }} | 
+        <a href="{{ page.topic_slug | relative_url }}/">{{ page.topic_name }}</a>
+    </p>
+    
+    {% if page.subtitle != "" %}
+    <h2>{{ page.subtitle }}</h2>
+    {% endif %}
+    
+    <div class="post-content">
+        {{ content }}
+    </div>
+    
+    {% if page.additional_content != "" %}
+    <div class="additional-content">
+        {{ page.additional_content | markdownify }}
+    </div>
+    {% endif %}
+    
+    {% if page.source_text != "" %}
+    <div class="source">
+        Источник: 
+        {% if page.source_url != "" %}
+        <a href="{{ page.source_url }}">{{ page.source_text }}</a>
+        {% else %}
+        {{ page.source_text }}
+        {% endif %}
+    </div>
+    {% endif %}
+    
+    {% if page.author != "" %}
+    <div class="author">Текст: {{ page.author }}</div>
+    {% endif %}
+</article>
+
+<div class="navigation">
+    {% if page.previous %}
+    <a href="{{ page.previous.url | relative_url }}" class="prev-link">{{ page.previous.title }}</a>
+    {% endif %}
+    {% if page.next %}
+    <a href="{{ page.next.url | relative_url }}" class="next-link">{{ page.next.title }}</a>
+    {% endif %}
+</div>

@@ -1,0 +1,25 @@
+---
+layout: default
+title: Архив Новостей 2000
+---
+
+{% for post in site.posts limit:10 %}
+<article class="announcement">
+    <div class="topic-box">
+        <a href="{{ '' | append: post.topic_slug | relative_url }}/">{{ post.topic_name }}</a>
+    </div>
+            <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+            {% if post.subtitle %}
+            <h3>{{ post.subtitle }}</h3>
+            {% endif %}
+            <p class="post-meta">
+            {% if post.author != "" %}
+            Текст: {{ post.author }}<br/>
+            {% endif %}
+            {{ post.date | date: site.date_format }}
+            </p>
+            <p>
+            {{ post.announcement }}
+            </p>
+</article>
+{% endfor %}
