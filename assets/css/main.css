@@ -39,7 +39,6 @@ header h1 a {
 }
 
 nav {
-    background-color: #f4f4f4;
     margin-bottom: 2rem;
     position: sticky;
     top: 0;
@@ -64,6 +63,10 @@ nav ul li a {
     padding: 0.5rem 1rem;
     text-decoration: none;
     white-space: nowrap;    
+}
+
+.top-nav {
+    background-color: #f4f4f4;
 }
 
 /* Main content styles */

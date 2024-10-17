@@ -29,7 +29,7 @@
     <header>
         <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
     </header>
-        <nav>
+        <nav class="top-nav">
             <ul>
                 {% for topic in site.data.topics %}
                 <li><a href="{{ '/' | append: topic.slug | append: '/' | relative_url }}">{{ topic.name }}</a></li>
