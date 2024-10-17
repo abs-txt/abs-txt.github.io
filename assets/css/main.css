@@ -30,12 +30,7 @@ a:hover {
 /* Header styles */
 header {
     background-color: #f4f4f4;
-    padding: 1rem;
-    margin-bottom: 2rem;
-}
-
-header h1 {
-    margin-bottom: 1rem;
+    padding: 1rem 1rem 0 1rem;
 }
 
 header h1 a {
@@ -43,14 +38,32 @@ header h1 a {
     text-decoration: none;
 }
 
+nav {
+    background-color: #f4f4f4;
+    margin-bottom: 2rem;
+    position: sticky;
+    top: 0;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
 nav ul {
     list-style-type: none;
     display: flex;
-    flex-wrap: wrap;
+    /*flex-wrap: wrap;*/
+    padding: 0;
+    margin: 0;
 }
 
 nav ul li {
-    margin-right: 1rem;
+    flex: 0 0 auto;
+}
+
+nav ul li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    text-decoration: none;
+    white-space: nowrap;    
 }
 
 /* Main content styles */
@@ -88,6 +101,11 @@ h3 {
     color: #666;
     font-size: 0.9rem;
     margin-bottom: 1rem;
+}
+
+.post-announcement {
+    margin-top: 1rem;
+    font-weight: 700;
 }
 
 .post-content {
@@ -136,6 +154,11 @@ h3 {
     font-size: 0.8em;
     color: #333;
     border-radius: 3px;
+}
+
+.sidebar .sticky-top-10 {
+    position: sticky;
+    top: 10px;
 }
 
 .topics-list {
@@ -286,7 +309,7 @@ footer {
     }
 
     nav ul {
-        justify-content: center;
+        justify-content: left;
     }
 
     nav ul li {

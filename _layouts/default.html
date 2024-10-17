@@ -14,6 +14,12 @@
   {% endif %}
 {% endif %}
 
+{% if page.autopage.display_name %}
+  {% assign current_topic = page.autopage.display_name %}
+{% elsif page.topic_slug %}
+  {% assign current_topic = page.topic_slug %}
+{% endif %}
+
     <title>{% if topic_title %}{{ topic_title }}{% elsif page.title %}{{ page.title }}{% endif %} &mdash; {{ site.title }}</title>
     {% gtm head %}
     <link rel="stylesheet" href="{{ '/assets/css/main.css' | relative_url }}">
@@ -22,6 +28,7 @@
 {% gtm body %}
     <header>
         <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
+    </header>
         <nav>
             <ul>
                 {% for topic in site.data.topics %}
@@ -29,7 +36,6 @@
                 {% endfor %}
             </ul>
         </nav>
-    </header>
 
     <main>
         <div class="content">
@@ -42,14 +48,26 @@
                 <li><span class="post-date">{{ post.date | date: site.date_format }}</span> <a href="{{ post.url | relative_url }}">{{ post.title }}</a></li>
                 {% endfor %}
             </ul>
-            <h2>Разделы</h2>
-            <ul>
+            <div>
+              <h2>Разделы</h2>
+              <ul>
                 {% for topic in site.data.topics %}
                 <li><a href="{{ topic.slug | append: '/' | relative_url }}">{{ topic.name }}</a></li>
                 {% endfor %}
-            </ul>
+              </ul>
+            </div>
         </aside>
     </main>
+
+{% if current_topic %}
+<script>
+  function scrollToNav(id)
+  {
+  	document.querySelector("nav a[href='/"+id+"/']").scrollIntoView({behavior: "smooth", inline: "center", block: "nearest"})
+  }
+  document.addEventListener("DOMContentLoaded", function() {scrollToNav("{{ current_topic }}");});
+</script>
+{% endif %}
 
     <footer>
         <p>&copy; 2004 &mdash; {{ site.time | date: '%Y' }} {{ site.title }}</p>
